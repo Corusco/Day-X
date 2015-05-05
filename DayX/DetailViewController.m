@@ -10,6 +10,7 @@
 
 @interface DetailViewController ()
 @property (weak, nonatomic) IBOutlet UITextField *detailLabel;
+@property (weak, nonatomic) IBOutlet UITextView *textView;
 
 @end
 
@@ -30,6 +31,12 @@
     [textField resignFirstResponder];
     
     return YES;
+}
+- (IBAction)clearButtonTapped:(id)sender
+{
+    self.textView.text = @"";
+    self.detailLabel.text = @"";
+    
 }
 
 /*

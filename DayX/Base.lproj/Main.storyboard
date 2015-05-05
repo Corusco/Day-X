@@ -77,16 +77,42 @@
                                     <outlet property="delegate" destination="d5B-o9-N1Q" id="v2B-KN-dWR"/>
                                 </connections>
                             </textField>
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Rge-ap-JQJ">
+                                <rect key="frame" x="16" y="110" width="568" height="470"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <string key="text">Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Nam liber te conscient to factor tum poen legum odioque civiuda.</string>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                            </textView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="uBW-bw-sMy">
+                                <rect key="frame" x="264" y="508" width="72" height="30"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="72" id="gfE-OJ-7pq"/>
+                                </constraints>
+                                <state key="normal" title="clear text">
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="clearButtonTapped:" destination="d5B-o9-N1Q" eventType="touchUpInside" id="67a-ow-2C9"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
+                            <constraint firstItem="ddY-25-3G1" firstAttribute="top" secondItem="uBW-bw-sMy" secondAttribute="bottom" constant="62" id="5xQ-cl-yA0"/>
                             <constraint firstItem="DZ9-D5-Cpa" firstAttribute="top" secondItem="c4n-8a-Qvv" secondAttribute="bottom" constant="8" symbolic="YES" id="BGY-E8-oUa"/>
+                            <constraint firstItem="uBW-bw-sMy" firstAttribute="centerX" secondItem="DZ9-D5-Cpa" secondAttribute="centerX" id="E0i-FN-aVW"/>
+                            <constraint firstAttribute="bottom" secondItem="Rge-ap-JQJ" secondAttribute="bottom" constant="20" symbolic="YES" id="IwM-m3-eDZ"/>
                             <constraint firstItem="DZ9-D5-Cpa" firstAttribute="trailing" secondItem="poF-Se-8SN" secondAttribute="trailingMargin" id="JYK-Li-xTf"/>
+                            <constraint firstItem="Rge-ap-JQJ" firstAttribute="trailing" secondItem="DZ9-D5-Cpa" secondAttribute="trailing" id="KeF-in-RU2"/>
+                            <constraint firstItem="Rge-ap-JQJ" firstAttribute="leading" secondItem="DZ9-D5-Cpa" secondAttribute="leading" id="Z4Y-5x-5zx"/>
+                            <constraint firstItem="Rge-ap-JQJ" firstAttribute="top" secondItem="DZ9-D5-Cpa" secondAttribute="bottom" constant="8" symbolic="YES" id="hCH-32-Z2O"/>
                             <constraint firstItem="DZ9-D5-Cpa" firstAttribute="leading" secondItem="poF-Se-8SN" secondAttribute="leadingMargin" id="stj-Od-Peu"/>
                         </constraints>
                     </view>
                     <connections>
                         <outlet property="detailLabel" destination="DZ9-D5-Cpa" id="hBO-vj-x5Y"/>
+                        <outlet property="textView" destination="Rge-ap-JQJ" id="qIv-q5-LeC"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="DcY-l7-Flt" userLabel="First Responder" sceneMemberID="firstResponder"/>
