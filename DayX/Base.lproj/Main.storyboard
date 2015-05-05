@@ -68,8 +68,26 @@
                     <view key="view" contentMode="scaleToFill" id="poF-Se-8SN">
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="DZ9-D5-Cpa">
+                                <rect key="frame" x="16" y="72" width="568" height="30"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                                <connections>
+                                    <outlet property="delegate" destination="d5B-o9-N1Q" id="v2B-KN-dWR"/>
+                                </connections>
+                            </textField>
+                        </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="DZ9-D5-Cpa" firstAttribute="top" secondItem="c4n-8a-Qvv" secondAttribute="bottom" constant="8" symbolic="YES" id="BGY-E8-oUa"/>
+                            <constraint firstItem="DZ9-D5-Cpa" firstAttribute="trailing" secondItem="poF-Se-8SN" secondAttribute="trailingMargin" id="JYK-Li-xTf"/>
+                            <constraint firstItem="DZ9-D5-Cpa" firstAttribute="leading" secondItem="poF-Se-8SN" secondAttribute="leadingMargin" id="stj-Od-Peu"/>
+                        </constraints>
                     </view>
+                    <connections>
+                        <outlet property="detailLabel" destination="DZ9-D5-Cpa" id="hBO-vj-x5Y"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="DcY-l7-Flt" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
