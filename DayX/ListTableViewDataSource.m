@@ -10,4 +10,18 @@
 
 @implementation ListTableViewDataSource
 
+-(NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
+{
+    return 5;
+}
+
+-(UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"entryCell"];
+    
+    cell.textLabel.text = [NSString stringWithFormat:@"Entry %ld", (long)indexPath.row];
+
+    return cell;
+}
+
 @end
