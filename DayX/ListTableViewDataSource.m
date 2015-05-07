@@ -12,15 +12,16 @@
 
 -(NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-    return 5;
+    
+    return [EntryController sharedInstance].entries.count;
 }
 
 -(UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"entryCell"];
+    Entry *entry = [EntryController sharedInstance].entries[indexPath.row];
+    cell.textLabel.text = entry.title;
     
-    cell.textLabel.text = [NSString stringWithFormat:@"Entry %ld", (long)indexPath.row];
-
     return cell;
 }
 

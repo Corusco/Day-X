@@ -18,7 +18,7 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    // Do any additional setup after loading the view.
+    [self updateWithEntry:self.entry];
 }
 
 - (void)didReceiveMemoryWarning {
@@ -37,6 +37,38 @@
     self.textView.text = @"";
     self.detailLabel.text = @"";
     
+}
+
+- (IBAction)saveButtonTapped:(id)sender {
+    
+    if (!self.entry){
+        Entry *entry = [Entry new];
+        entry.title = self.detailLabel.text;
+        entry.bodyText = self.textView.text;
+        entry.timestamp = [NSDate date];
+        
+    [[EntryController sharedInstance] addEntry:entry];
+    
+    self.entry = entry;
+    } else {
+        int index = [[EntryController sharedInstance] findIndexForEntry:self.entry];
+        
+        Entry *entry = [Entry new];
+        entry.title = self.detailLabel.text;
+        entry.bodyText = self.textView.text;
+        entry.timestamp = [NSDate date];
+        
+        [[EntryController sharedInstance] insertEntry:entry atIndex:index];
+        
+        self.entry = entry;
+    }
+    
+    [self.navigationController popToRootViewControllerAnimated:YES];
+}
+
+- (void)updateWithEntry:(Entry *)entry {
+    self.detailLabel.text = entry.title;
+    self.textView.text = entry.bodyText;
 }
 
 /*
