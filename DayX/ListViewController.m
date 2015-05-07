@@ -24,4 +24,20 @@
     // Dispose of any resources that can be recreated.
 }
 
+<<<<<<< Updated upstream
+=======
+- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender{
+    if ([segue.identifier isEqualToString:@"viewEntry"]) {
+        
+        NSArray *entryArray = [EntryController sharedInstance].entries;
+        
+        Entry *entry  = entryArray[[self.tableView indexPathForSelectedRow].row];
+        
+        DetailViewController *destination = segue.destinationViewController;
+        
+        destination.entry = entry;
+    }
+}
+
+>>>>>>> Stashed changes
 @end
