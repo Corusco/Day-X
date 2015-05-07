@@ -38,49 +38,6 @@
     
     return YES;
 }
-<<<<<<< Updated upstream
-=======
-- (IBAction)clearButtonTapped:(id)sender
-{
-    self.textView.text = @"";
-    self.detailLabel.text = @"";
-    
-}
-
-- (IBAction)saveButtonTapped:(id)sender {
-    
-    if (!self.entry){
-        Entry *entry = [Entry new];
-        entry.title = self.detailLabel.text;
-        entry.bodyText = self.textView.text;
-        entry.timestamp = [NSDate date];
-        
-    [[EntryController sharedInstance] addEntry:entry];
-    
-    self.entry = entry;
-    } else {
-        int index = [[EntryController sharedInstance] findIndexForEntry:self.entry];
-        
-        Entry *entry = [Entry new];
-        entry.title = self.detailLabel.text;
-        entry.bodyText = self.textView.text;
-        entry.timestamp = [NSDate date];
-        
-        [[EntryController sharedInstance] insertEntry:entry atIndex:index];
-        
-        self.entry = entry;
-    }
-    
-    [self.navigationController popToRootViewControllerAnimated:YES];
-    
-    [[EntryController sharedInstance] save];
-}
-
-- (void)updateWithEntry:(Entry *)entry {
-    self.detailLabel.text = entry.title;
-    self.textView.text = entry.bodyText;
-}
->>>>>>> Stashed changes
 
 /*
 #pragma mark - Navigation
