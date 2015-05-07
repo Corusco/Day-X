@@ -7,6 +7,7 @@
 //
 
 #import "EntryController.h"
+#import "Entry.h"
 
 @interface EntryController ()
 
@@ -21,6 +22,7 @@ static EntryController *sharedInstance = nil;
 static dispatch_once_t onceToken;
 dispatch_once(&onceToken, ^{
     sharedInstance = [EntryController new];
+    [sharedInstance loadFromPersistentStorage];
 });
 
     return sharedInstance;
@@ -30,12 +32,16 @@ dispatch_once(&onceToken, ^{
     NSMutableArray *entryArray = [[NSMutableArray alloc] initWithArray:self.entries];
     [entryArray addObject:entry];
     _entries = entryArray;
+    
+    [self saveToPersistentStorage];
 }
 
 -(void)removeEntry:(Entry *)entry{
     NSMutableArray *removalArray = [[NSMutableArray alloc] initWithArray:self.entries];
     [removalArray removeObject:entry];
     _entries = removalArray;
+    
+    [self saveToPersistentStorage];
 }
 
 -(int)findIndexForEntry:(Entry *)entry{
@@ -59,5 +65,35 @@ dispatch_once(&onceToken, ^{
     [entryArray insertObject:entry atIndex:index];
     
     _entries = entryArray;
+    
+    [self saveToPersistentStorage];
 }
+
+- (void)saveToPersistentStorage {
+    NSMutableArray *persistentArray  = [NSMutableArray new];
+    
+    for (Entry *i in _entries) {
+        [persistentArray addObject:[i persistentDictionary]];
+    }
+    [[NSUserDefaults standardUserDefaults] setObject:persistentArray forKey:@"AllEntriesKey"];
+    [[NSUserDefaults standardUserDefaults] synchronize];
+}
+
+- (void)save{
+    [self saveToPersistentStorage];
+}
+
+- (void)loadFromPersistentStorage {
+    NSArray *allDictionaries = [[NSUserDefaults standardUserDefaults] arrayForKey:@"AllEntriesKey"];
+    NSMutableArray *allEntries = [NSMutableArray new];
+    
+    for (NSDictionary *i in allDictionaries) {
+        [allEntries addObject:[[Entry alloc] initWithDictionary:i]];
+    }
+    
+    self.entries = allEntries;
+    
+    
+}
+
 @end

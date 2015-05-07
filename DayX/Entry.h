@@ -14,4 +14,8 @@
 @property NSString *bodyText;
 @property NSDate *timestamp;
 
+- (instancetype)initWithDictionary:(NSDictionary *)dictionary;
+
+- (NSDictionary *)persistentDictionary;
+
 @end

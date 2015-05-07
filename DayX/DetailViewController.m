@@ -64,6 +64,8 @@
     }
     
     [self.navigationController popToRootViewControllerAnimated:YES];
+    
+    [[EntryController sharedInstance] save];
 }
 
 - (void)updateWithEntry:(Entry *)entry {

@@ -18,5 +18,8 @@
 - (void)removeEntry:(Entry *)entry;
 - (int)findIndexForEntry:(Entry *)entry;
 - (void)insertEntry:(Entry *)entry atIndex:(int)index;
+- (void)saveToPersistentStorage;
+- (void)save;
+- (void)loadFromPersistentStorage;
 
 @end
