@@ -45,6 +45,9 @@
                             </connections>
                         </barButtonItem>
                     </navigationItem>
+                    <connections>
+                        <outlet property="tableView" destination="Vni-fL-fUf" id="kzl-ih-WqJ"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="x5A-6p-PRh" sceneMemberID="firstResponder"/>
                 <customObject id="R4t-5x-5SQ" customClass="ListTableViewDataSource"/>
@@ -99,9 +102,16 @@
                             <constraint firstItem="1h2-BN-wFV" firstAttribute="leading" secondItem="Thc-EU-fvI" secondAttribute="leading" id="x3Y-t2-cai"/>
                         </constraints>
                     </view>
+                    <navigationItem key="navigationItem" id="Eb8-Ot-QKL">
+                        <barButtonItem key="rightBarButtonItem" systemItem="save" id="ZdQ-Fb-KUZ">
+                            <connections>
+                                <action selector="saveButtonTapped:" destination="so6-Qi-BpF" id="oId-Im-iCd"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
                     <connections>
-                        <outlet property="textField" destination="Thc-EU-fvI" id="FKf-NI-TVS"/>
-                        <outlet property="textView" destination="1h2-BN-wFV" id="xah-F9-GnT"/>
+                        <outlet property="bodyText" destination="1h2-BN-wFV" id="XDj-9Z-gZt"/>
+                        <outlet property="title" destination="Thc-EU-fvI" id="NjS-dh-d47"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Naf-R1-Y7H" userLabel="First Responder" sceneMemberID="firstResponder"/>
