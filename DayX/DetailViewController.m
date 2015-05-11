@@ -41,13 +41,20 @@
 }
 
 - (IBAction)saveButtonTapped:(id)sender {
+    if (self.entryToBeViewed) {
+        self.entryToBeViewed.title = self.title.text;
+        self.entryToBeViewed.bodyText = self.bodyText.text;
+        self.entryToBeViewed.timestamp = [NSDate date];
+        
+        [[EntryController sharedInstance] save];
+    } else {
     self.entryToBeViewed = [[EntryController sharedInstance] createEntryWithTitle:self.title.text bodyText:self.bodyText.text];
+    }
 }
 
 - (void)updateWithEntry:(Entry *)selectedEntry{
     self.title.text = selectedEntry.title;
     self.bodyText.text = selectedEntry.bodyText;
 }
-
 
 @end

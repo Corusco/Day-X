@@ -8,6 +8,8 @@
 
 #import "EntryController.h"
 
+static NSString * const AllEntriesKey = @"allEntries";
+
 @interface EntryController ()
 
 @property (strong, nonatomic) NSArray *entryArray;
@@ -45,6 +47,7 @@ static NSString const *entryKey = @"entry";
     [additiveArray addObject:entryToAdd];
     
     self.entryArray = additiveArray;
+    [self saveToPersistentStorage];
 }
 
 
@@ -53,8 +56,34 @@ static NSString const *entryKey = @"entry";
     [removalArray removeObject:entryToRemove];
     
     self.entryArray = removalArray;
+    [self saveToPersistentStorage];
 }
 
+- (void)saveToPersistentStorage{
+    NSMutableArray *saveArray = [NSMutableArray new];
+    for (Entry *entry in self.entryArray) {
+        [saveArray addObject:[entry dictionaryRepresentation]];
+    }
+    
+    [[NSUserDefaults standardUserDefaults] setObject:saveArray forKey:AllEntriesKey];
+    [[NSUserDefaults standardUserDefaults] synchronize];
+}
+
+- (void)loadFromPersistentStorage {
+    NSArray *entryDictionaries = [[NSUserDefaults standardUserDefaults] objectForKey:AllEntriesKey];
+    self.entryArray = entryDictionaries;
+    
+    NSMutableArray *entries = [NSMutableArray new];
+    for (NSDictionary *entry in entryDictionaries) {
+        [entries addObject:[[Entry alloc] initWithDictionary:entry]];
+    }
+    
+    self.entryArray = entries;
+}
+
+- (void)save {
+    [self saveToPersistentStorage];
+}
 
 
 @end
